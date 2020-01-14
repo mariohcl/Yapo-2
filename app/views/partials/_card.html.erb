@@ -1,0 +1,31 @@
+<div class="card px-0 mx-2" style="width: 18rem;">
+  <%= image_tag(data.photo, class: "card-img-top") %>
+
+  <div class="card-body">
+    <h5 class="card-title"><%= data.title %></h5>
+    <p><%= data.user.email %></p>
+    <p class="card-text">
+      <div><%= data.desc %></div>
+      <div class="float-right"><%= data.price %></div>
+
+    </p>
+
+      <% if user_signed_in? && current_user.id == data.user.id %>
+      <%= link_to 'Edit', edit_product_path(data) %>
+      <%= link_to 'Destroy', data, method: :delete, data: { confirm: 'Are you sure'} %>
+      <% end %>
+
+      <% # si el usuario esta registrado Y es el actual usuario del actual producto, el data es el relacionado al user.id,  -%>
+
+      <div card="card-footer">
+        <%= link_to 'Ver mas', data, class: "btn btn-primary" %>
+
+        <% if user_signed_in? && current_user.id != data.user.id %>
+        <a href="#" class="btn btn-success float-right">Comprar</a>
+        <% end %>
+        <% # si el usuario esta registrado Y es el actual usuario del actual producto, el data es distinto al user.id,  -%>
+
+      </div>
+
+  </div>
+</div>

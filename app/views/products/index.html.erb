@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+
+
+<div class="container">
+
+  <h1>Products</h1>
+
+<div class="row">
+
+  <% @products.each do |product| %>
+    <%= render 'partials/card', :data => product %>
+  <% end %>
+
+</div>
+
+</div>
